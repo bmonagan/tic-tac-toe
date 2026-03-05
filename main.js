@@ -30,6 +30,11 @@ class Gameboard {
             this.currentPlayer = this.player1;
         }
     }
+    updateScores() {
+        document.querySelector(".p1score").textContent = this.player1_wins;
+        document.querySelector(".p2score").textContent = this.player2_wins;
+        document.querySelector(".draw-count").textContent = this.draws;  
+    }
     checkWinner() {
         const lines = [
             [this.gameboard[0][0], this.gameboard[0][1], this.gameboard[0][2]],
@@ -70,6 +75,7 @@ class Gameboard {
                 this.renderBoard();
                 console.log("Game ended in a draw");
                 this.draws++;
+                this.updateScores();
                 this.resetBoard();
                 return;
             }
@@ -82,6 +88,7 @@ class Gameboard {
                     this.player2_wins++;
                 }
                 console.log(`Player ${result} wins!`);
+                this.updateScores();
                 this.resetBoard();
                 return;
             }
@@ -94,7 +101,7 @@ class Gameboard {
 }
 
 const GB = new Gameboard();
-    const cells = document.querySelectorAll(".cell");
+const cells = document.querySelectorAll(".cell");
 
 cells.forEach((cell) => {
   cell.addEventListener("click", () => {
@@ -103,6 +110,7 @@ cells.forEach((cell) => {
 
     GB.playersTurn(row, col);
             cell.textContent = GB.gameboard[row][col];
+            
   });
 });
 
