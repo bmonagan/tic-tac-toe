@@ -77,11 +77,19 @@ class Gameboard {
 }
 
 const GB = new Gameboard();
+    const cells = document.querySelectorAll(".cell");
+
 cells.forEach((cell) => {
   cell.addEventListener("click", () => {
+            if (GB.gamestate === 0) {
+                    return;
+            }
+
     const row = Number(cell.dataset.row);
     const col = Number(cell.dataset.col);
+
     GB.playersTurn(row, col);
+            cell.textContent = GB.gameboard[row][col];
   });
 });
 
