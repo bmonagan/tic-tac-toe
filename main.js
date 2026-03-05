@@ -7,7 +7,6 @@ class Gameboard {
         this.player1 = "X";
         this.player2= "O";
         this.currentPlayer = this.player1;
-        this.gamestate = 1;
     }
     renderBoard() {
         console.log(this.gameboard);
@@ -65,13 +64,11 @@ class Gameboard {
             if (result === "draw") {
                 this.renderBoard();
                 console.log("Game ended in a draw");
-                this.gamestate = 0;
                 return;
             }
             if (result) {
                 this.renderBoard();
                 console.log(`Player ${result} wins!`);
-                this.gamestate = 0;
                 return;
             }
             this.changePlayer();
@@ -87,10 +84,6 @@ const GB = new Gameboard();
 
 cells.forEach((cell) => {
   cell.addEventListener("click", () => {
-            if (GB.gamestate === 0) {
-                    return;
-            }
-
     const row = Number(cell.dataset.row);
     const col = Number(cell.dataset.col);
 
