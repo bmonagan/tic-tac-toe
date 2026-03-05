@@ -7,6 +7,7 @@ class Gameboard {
         this.player1 = "X";
         this.player2= "O";
         this.currentPlayer = this.player1;
+        this.gamestate = 1;
     }
     renderBoard() {
         console.log(this.gameboard);
@@ -58,11 +59,13 @@ class Gameboard {
             if (result === "draw") {
                 this.renderBoard();
                 console.log("Game ended in a draw");
+                this.gamestate = 0;
                 return;
             }
             if (result) {
                 this.renderBoard();
                 console.log(`Player ${result} wins!`);
+                this.gamestate = 0;
                 return;
             }
             this.changePlayer();
@@ -74,5 +77,9 @@ class Gameboard {
 }
 
 const GB = new Gameboard();
-console.log(GB.gameboard);
+while (GB.gamestate === 1) {
+    let x = prompt("X:");
+    let y = prompt("Y:");
+    GB.playersTurn(x,y);
+}1
 
