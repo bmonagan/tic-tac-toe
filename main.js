@@ -67,11 +67,20 @@ class Gameboard {
             if (result === "draw") {
                 this.renderBoard();
                 console.log("Game ended in a draw");
+                this.draws++;
+                this.resetBoard();
                 return;
             }
             if (result) {
                 this.renderBoard();
+                if (this.currentPlayer === this.player1) {
+                    this.player1_wins++;
+                }
+                else {
+                    this.player2_wins++;
+                }
                 console.log(`Player ${result} wins!`);
+                this.resetBoard();
                 return;
             }
             this.changePlayer();
