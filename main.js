@@ -77,9 +77,12 @@ class Gameboard {
 }
 
 const GB = new Gameboard();
-while (GB.gamestate === 1) {
-    let x = prompt("X:");
-    let y = prompt("Y:");
-    GB.playersTurn(x,y);
-}1
+cells.forEach((cell) => {
+  cell.addEventListener("click", () => {
+    const row = Number(cell.dataset.row);
+    const col = Number(cell.dataset.col);
+    GB.playersTurn(row, col);
+  });
+});
+
 
