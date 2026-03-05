@@ -19,7 +19,9 @@ class Gameboard {
         ["", "", ""],
         ["", "", ""],
         ["", "", ""]];
-    }
+        cells.forEach((cell) => 
+            cell.textContent = ""
+    )}
     changePlayer() {
         if (this.currentPlayer === this.player1) {
             this.currentPlayer = this.player2;
