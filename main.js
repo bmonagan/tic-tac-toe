@@ -12,6 +12,12 @@ class Gameboard {
     renderBoard() {
         console.log(this.gameboard);
     }
+    resetBoard() {
+        this.gameboard = [
+        ["", "", ""],
+        ["", "", ""],
+        ["", "", ""]];
+    }
     changePlayer() {
         if (this.currentPlayer === this.player1) {
             this.currentPlayer = this.player2;
