@@ -7,6 +7,9 @@ class Gameboard {
         this.player1 = "X";
         this.player2= "O";
         this.currentPlayer = this.player1;
+        this.player1_wins = 0;
+        this.player2_wins = 0;
+        this.draws = 0;
     }
     renderBoard() {
         console.log(this.gameboard);
